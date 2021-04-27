@@ -15,6 +15,8 @@ public class TestAdressePostale {
 		b.libelleVoie = "des Lys";
 		b.codePostal = 44000;
 		b.ville = "Nantes";
+		
+		System.out.println(a.numeroRue);
 
 	}
 

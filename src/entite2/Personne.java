@@ -2,8 +2,8 @@ package entite2;
 
 import entites.AdressePostale;
 
-class Personne {
-	String nom;
-	String prenom;
-	AdressePostale adressePostale;
+public class Personne {
+	public String nom;
+	public String prenom;
+	public AdressePostale adressePostale;
 }
