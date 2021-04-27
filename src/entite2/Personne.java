@@ -17,4 +17,31 @@ public class Personne {
 		this.prenom = prenom;
 		this.adressePostale = adressePostale;
 	}
+	public String afficherNomPrenom() {
+		return nom.toUpperCase() + " " + prenom;
+	}
+	public void modifierNom(String nouveauNom) {
+		nom = nouveauNom;
+	}
+	public void modifierPrenom(String nouveauPrenom) {
+		prenom = nouveauPrenom;
+	}
+	public void modifierAdresse(int numeroRue, String libelleVoie, int codePostal, String ville) {
+		adressePostale.numeroRue = numeroRue;
+		adressePostale.libelleVoie = libelleVoie;
+		adressePostale.codePostal = codePostal;
+		adressePostale.ville = ville;
+	}
+	public String afficherNom() {
+		return nom;
+	}
+	public String afficherPrenom() {
+		return prenom;
+	}
+	public String afficherAdresse() {
+		return adressePostale.numeroRue + " rue " + adressePostale.libelleVoie + " " + adressePostale.codePostal + " " + adressePostale.ville;
+	}
+
+
+
 }
