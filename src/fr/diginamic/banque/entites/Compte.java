@@ -2,9 +2,9 @@ package fr.diginamic.banque.entites;
 
 public class Compte {
 	private String numero;
-	private int solde;
+	private double solde;
 	
-	public Compte(String numero, int solde) {
+	public Compte(String numero, double solde) {
 		this.numero = numero;
 		this.solde = solde;
 	}
@@ -18,12 +18,12 @@ public class Compte {
 		this.numero = numero;
 	}
 	
-	public int getSolde() {
+	public double getSolde() {
 		return solde;
 		
 	}
 	
-	public void setSolde(int solde) {
+	public void setSolde(double solde) {
 		this.solde = solde;
 	}
 	
