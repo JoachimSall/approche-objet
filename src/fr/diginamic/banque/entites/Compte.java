@@ -26,4 +26,8 @@ public class Compte {
 	public void setSolde(int solde) {
 		this.solde = solde;
 	}
+	
+	public String toString() {
+		return "numero de compte : " + numero + " \nsolde du compte : " + solde + " €"; 
+	}
 }
