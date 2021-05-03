@@ -28,10 +28,10 @@ public class TestListeInt {
 		System.out.println(liste.size());
 		
 		//plus grand élément de la liste
-		int max = liste.get(0);
+		int max = 0;
 		
-		for(int i = 1; i < liste.size() - 1; i++) {
-			if (liste.get(i) > liste.get(i-1)) {
+		for(int i = 0; i < liste.size(); i++) {
+			if (liste.get(i) > max) {
 				max = liste.get(i);
 			}
 		}
@@ -41,8 +41,8 @@ public class TestListeInt {
 		//suppression du plus petit élément de la liste et affichage de celle-ci
 		int min = liste.get(0);
 		
-		for(int i = 1; i < liste.size() - 1; i++) {
-			if (liste.get(i) < liste.get(i-1)) {
+		for(int i = 0; i < liste.size(); i++) {
+			if (liste.get(i) < min) {
 				min = liste.get(i);
 			}
 		}
