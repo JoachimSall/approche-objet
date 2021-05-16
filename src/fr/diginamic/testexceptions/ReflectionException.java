@@ -1,8 +1,8 @@
 package fr.diginamic.testexceptions;
 
-//public class ReflectionException extends Exception{
-//	//@Override
-//	//public void afficherAttributs() {
-//		
-//	}
-//}
+public class ReflectionException extends Exception{
+	
+	public ReflectionException(String erreur) {
+		super(erreur);
+	}
+}

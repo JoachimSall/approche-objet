@@ -4,8 +4,11 @@ import java.lang.reflect.Field;
 
 public class ReflectionUtils {
 	public static void afficherAttributs(Object obj) throws IllegalArgumentException,
-	IllegalAccessException {
-
+	IllegalAccessException, ReflectionException {
+			
+			if(obj == null) {
+				throw new ReflectionException("Vous ne pouvez pas passer un objet vide en paramètre !");
+			}
 			// On commence par récupérer la classe de l'objet passée en paramètre.
 			// la classe fournit toutes les informations sur la structure d'un objet.
 			Class<?> classe = obj.getClass();
