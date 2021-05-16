@@ -18,27 +18,70 @@ public class Application {
 		List<String> lignes = Files.readAllLines(path, StandardCharsets.UTF_8);
 		List<Ville> villes = new ArrayList<>();
 		
-		for (int i = 1; i < lignes.size(); i++) {
+		Recensement.Traiter(lignes, villes);
+
+		Scanner scan = new Scanner(System.in);
+		
+		int choix = 0;
+		
+		while(choix != 9) {
 			
-			String[] valeurs = lignes.get(i).split(";");
-			String codeRegion = valeurs[0];
-			String region = valeurs[1];
-			String codeDpt = valeurs[2];
-			String codeCommune = valeurs[5];
-			String nom = valeurs[6];
-			int pop = Integer.parseInt(valeurs[9].replaceAll(" ", ""));
+			getMenu();
 			
-			Ville ville = new Ville();
-			ville.setCodeRegion(codeRegion);
-			ville.setRegion(region);
-			ville.setCodeDpt(codeDpt);
-			ville.setCodeCommune(codeCommune);
-			ville.setNom(nom);
-			ville.setPop(pop);
+			choix = Integer.parseInt(scan.nextLine());
 			
-			villes.add(ville);
-			
-		}
+			switch(choix) {
+				case 1:
+					System.out.println("Entrez le nom de la ville dont vous souhaitez voir la population :");
+					PopulationVille popVille = new PopulationVille();
+					popVille.traiter(villes, scan);
+					break;
+					
+				case 2:
+					System.out.println("Entrez le code du département dont vous souhaitez voir la population :");
+					PopulationDepartement popDpt = new PopulationDepartement();
+					popDpt.traiter(villes, scan);
+					break;
+					
+				case 3:
+					System.out.println("Entrez le nom/code de la région dont vous souhaitez voir la population :");
+					PopulationRegion popRegion = new PopulationRegion();
+					popRegion.traiter(villes, scan);
+					break;
+					
+				case 4:
+					RegionsPlusPeuplees regions = new RegionsPlusPeuplees();
+					regions.traiter(villes, scan);
+					break;
+					
+				case 5:
+					DepartementsPlusPeuplees dpt = new DepartementsPlusPeuplees();
+					dpt.traiter(villes, scan);
+					break;
+					
+				case 6:
+					System.out.println("Entrez le code du département dont vous souhaitez voir les 10 villes les plus peuplées");
+					VillesPeupleesDpt villesDpt = new VillesPeupleesDpt();
+					villesDpt.traiter(villes, scan);
+					break;
+					
+				case 7:
+					System.out.println("Entrez le nom/code de la région dont vous souhaitez voir les 10 villes les plus peuplées");
+					VillesPeupleesRegion villesRegion = new VillesPeupleesRegion();
+					villesRegion.traiter(villes, scan);
+					break;
+					
+				case 8:
+					VillesPlusPeuplees villesPeuplees = new VillesPlusPeuplees();
+					villesPeuplees.traiter(villes, scan);
+					break;
+			}
+		}	
+		
+		scan.close();
+	}
+	
+	public static void getMenu() {
 		
 		System.out.println("Choisissez une option :");
 		System.out.println("1 --> Population d'une ville donnée");
@@ -51,39 +94,6 @@ public class Application {
 		System.out.println("8 --> Afficher les 10 villes les plus peuplées de France");
 		System.out.println("9 --> Sortir");
 		
-		Scanner scan = new Scanner(System.in);
-		
-		switch(scan.nextInt()) {
-			case 1:
-				System.out.println("Entrez le nom de la ville dont vous souhaitez voir la population :");
-				PopulationVille popVille = new PopulationVille();
-				popVille.traiter(villes, scan);
-				break;
-				
-			case 2:
-				System.out.println("Entrez le code du département dont vous souhaitez voir la population :");
-				PopulationDepartement popDpt = new PopulationDepartement();
-				popDpt.traiter(villes, scan);
-				break;
-				
-			case 3:
-				System.out.println("Entrez le nom/code de la région dont vous souhaitez voir la population :");
-				PopulationRegion popRegion = new PopulationRegion();
-				popRegion.traiter(villes, scan);
-				break;
-				
-			case 4:
-				RegionsPlusPeuplees regions = new RegionsPlusPeuplees();
-				regions.trier(villes);
-				
-			case 5:
-			case 6:
-			case 7:
-			case 8:
-			case 9:
-		}
-		
-		scan.close();
 	}
 
 }

@@ -8,13 +8,16 @@ public class PopulationRegion extends MenuService {
 	@Override
 	public void traiter(List<Ville> villes, Scanner scanner ) {
 		int population = 0;
-		String scan = scanner.next().toUpperCase();
-		for(int i = 0; i < villes.size(); i++) {
-			if(villes.get(i).getRegion().toUpperCase().equals(scan) || villes.get(i).getCodeRegion().toUpperCase().equals(scan)) {
-				population = population + villes.get(i).getPop();
+		String scan = scanner.nextLine();
+		for(Ville ville : villes) {
+			if(ville.getRegion().toUpperCase().equals(scan.toUpperCase()) || ville.getCodeRegion().toUpperCase().equals(scan.toUpperCase())) {
+				population = population + ville.getPop();
 			}
 		}
-		System.out.println(population + " habitants");
+		if (population > 0)
+			System.out.println(population + " habitants");
+		else 
+			System.out.println("Région non trouvée");
 	}
 	
 }

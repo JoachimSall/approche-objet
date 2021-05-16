@@ -10,13 +10,14 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Scanner;
 
-public class RegionsPlusPeuplees{
-
-	public void trier(List<Ville> villes) {
+public class RegionsPlusPeuplees extends MenuService{
+	
+	@Override
+	public void traiter(List<Ville> villes, Scanner scan) {
 		HashMap<String, Integer> regionPop = new HashMap<>();
-		for (int i = 0; i < villes.size(); i++) {
-			Integer population = villes.get(i).getPop();
-			String region = villes.get(i).getRegion();
+		for (Ville ville : villes) {
+			Integer population = ville.getPop();
+			String region = ville.getRegion();
 			Integer compteur = regionPop.get(region);
 			if (compteur == null){
 				compteur = population;
@@ -27,23 +28,21 @@ public class RegionsPlusPeuplees{
 			}
 		}
 		
-		
-	   List<Map.Entry<String, Integer>> list = new LinkedList<Map.Entry<String, Integer>>( regionPop.entrySet() );
+	   List<Map.Entry<String, Integer>> listRegions = new LinkedList<Map.Entry<String, Integer>>( regionPop.entrySet() );
 	   
-	   System.out.println(regionPop);
-	   System.out.println(list);
-	   
-	   Collections.sort( list, new Comparator<Map.Entry<String, Integer>>(){
+	   Collections.sort( listRegions, new Comparator<Map.Entry<String, Integer>>(){
 	      public int compare( Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2 ){
-	    	  return (o1.getValue()).compareTo( o2.getValue());
+	    	  return (o2.getValue()).compareTo( o1.getValue());
 	      }
 	   });
 
 	   HashMap<String,Integer> regionTriees = new LinkedHashMap<String, Integer>();
-	   for(Entry<String, Integer> entry : list)
+	   for(Entry<String, Integer> entry : listRegions)
 		   regionTriees.put( entry.getKey(), entry.getValue() );
 			
-		System.out.println(regionTriees);
+	   for(int i = 0; i < 10; i++) {
+		   System.out.println((i+1) + ") " + regionTriees.keySet().toArray()[i] + " = " + regionTriees.values().toArray()[i] + " habitants");
+	   }
 		
 	}
 }
